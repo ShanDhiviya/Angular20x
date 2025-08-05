@@ -1,0 +1,33 @@
+<div class="home-container">
+  <div class="logo-section">
+    <img src="/assets/angular.svg" alt="Angular Logo" class="angular-logo">
+  </div>
+
+  <div class="counter-section">
+    <h2>Signal-based Counter</h2>
+    <div class="counter-controls">
+      <button (click)="decrement()">-</button>
+      <span class="counter-value">{{ counter() }}</span>
+      <button (click)="increment()">+</button>
+    </div>
+  </div>
+
+  <div class="api-section">
+    <h2>Public APIs</h2>
+    @if (loading()) {
+      <div class="loading">Loading...</div>
+    } @else if (error()) {
+      <div class="error">{{ error() }}</div>
+    } @else {
+      <ul class="api-list">
+        @for (api of apis(); track api.API) {
+          <li class="api-item">
+            <h3>{{ api.API }}</h3>
+            <p>{{ api.Description }}</p>
+            <span class="category">{{ api.Category }}</span>
+          </li>
+        }
+      </ul>
+    }
+  </div>
+</div>
